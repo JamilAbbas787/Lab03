@@ -20,12 +20,18 @@ namespace Lab03
 
             bool userNumberValidator = UInt32.TryParse(userNumberEntry, out UInt32 userNumber);
 
-            while (!userNumberValidator && userNumber < 0 && userNumber > 100)
+            while (!userNumberValidator)
             {
                 Console.WriteLine($"Hey {userName}!!! Please enter a number between 1 and 100: ");
                 userNumberEntry = Console.ReadLine();
                 userNumberValidator = UInt32.TryParse(userNumberEntry, out userNumber);
-                
+
+                if (userNumber > 0 && userNumber < 100)
+                {
+                    continue;
+                }
+
+                break;
             }
 
             Console.ReadKey();
