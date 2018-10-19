@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Lab03
@@ -16,8 +17,21 @@ namespace Lab03
             Console.WriteLine($"Welcome {userName}!");
             Console.Write("Enter a number between 1 and 100:   ");
             string userNumberEntry = Console.ReadLine();
-        
-            bool userNumberValidation
+
+            bool userNumberValidator = UInt32.TryParse(userNumberEntry, out UInt32 userNumber);
+
+            while (!userNumberValidator && userNumber < 0 && userNumber > 100)
+            {
+                Console.WriteLine($"Hey {userName}!!! Please enter a number between 1 and 100: ");
+                userNumberEntry = Console.ReadLine();
+                userNumberValidator = UInt32.TryParse(userNumberEntry, out userNumber);
+                
+            }
+
+            Console.ReadKey();
+            
+
+
         }
     }
 }
